@@ -3,7 +3,6 @@
  */
 
 var fs = require('fs');
-var xml2js = require('xml2js');
 var ejs = require('ejs');
 
 var template = null;
@@ -25,6 +24,7 @@ function getTemplate() {
  */
 function getContent(msg) {
     var obj = {};
+    obj.content = "hehe";
     switch (msg.MsgType) {
         case 'text':
             break;
