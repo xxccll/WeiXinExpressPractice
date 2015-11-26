@@ -55,6 +55,7 @@ function getContent(msg) {
  */
 function reply(msg, req, res, next) {
     var content = getContent(msg);
+    res.send(ejs.render(getTemplate(), msg));
 }
 
 exports.reply = reply;
