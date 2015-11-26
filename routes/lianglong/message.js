@@ -12,7 +12,7 @@ var template = null;
  */
 function getTemplate() {
     if (!template) {
-        template = fs.readFileSync("../../views/template.ejs", "utf-8");
+        template = fs.readFileSync("./views/template.ejs", "utf-8");
     }
     return template;
 }
