@@ -54,10 +54,15 @@ function getContent(msg) {
  * @param next
  */
 function reply(msg, req, res, next) {
+    if (!msg){
+        console.log("msg == undefined !");
+        res.send("");
+        return;
+    }
     var content = getContent(msg);
     var testJson = {
-        toUsername   : msg.ToUserName,
-        fromUsername : msg.FromUserName,
+        toUsername   : msg.FromUserName,
+        fromUsername : msg.ToUserName,
         createTime   : new Date().getTime(),
         msgType      : 'text',
         content      : "测试"

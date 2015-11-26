@@ -53,11 +53,6 @@ router.get('/', function (req, res, next) {
  * 处理post请求,用来处理用户发送的消息
  */
 router.post('/', function (req, res, next) {
-    var echostr = checkSignature(TOKEN, req);
-    if (!echostr) {
-        res.send('not from WeiXin Server');
-        return;
-    }
     var postData = "";
     req.on('data', function (chunk) {
         postData += chunk;
