@@ -55,7 +55,14 @@ function getContent(msg) {
  */
 function reply(msg, req, res, next) {
     var content = getContent(msg);
-    res.send(ejs.render(getTemplate(), msg));
+    var testJson = {
+        toUsername   : msg.ToUserName,
+        fromUsername : msg.FromUserName,
+        createTime   : msg.CreateTime,
+        msgType      : 'text',
+        content      : msg.Content
+    };
+    res.send(ejs.render(getTemplate(), testJson));
 }
 
 exports.reply = reply;
