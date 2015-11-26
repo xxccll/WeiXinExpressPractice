@@ -58,11 +58,12 @@ function reply(msg, req, res, next) {
     var testJson = {
         toUsername   : msg.ToUserName,
         fromUsername : msg.FromUserName,
-        createTime   : msg.CreateTime,
+        createTime   : new Date().getTime(),
         msgType      : 'text',
-        content      : msg.Content
+        content      : "测试"
     };
-    res.send(ejs.render(getTemplate(), testJson));
+    var response = ejs.render(getTemplate(), testJson);
+    res.send(response);
 }
 
 exports.reply = reply;

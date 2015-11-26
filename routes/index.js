@@ -1,30 +1,24 @@
 var express = require('express');
 var router = express.Router();
+var message = require("./lianglong/message");
 
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {title : 'Express'});
-    //test_xml2js(res);
+    //test_xml2js(req, res, next);
 });
 
 
-function test_xml2js(res) {
+function test_xml2js(req, res, next) {
     var testJson = {
-        toUsername   : "hehehda",
-        fromUsername : "hahahada",
-        createTime   : "",
-        msgType      : 'text',
-        content      : "heheheheheheheh"
+        ToUserName   : "hehehda",
+        FromUserName : "hahahada",
+        CreateTime   : "111",
+        MsgType      : 'text',
+        Content      : "heheheheheheheh"
     };
-
-    var fs = require('fs');
-    var xml2js = require('xml2js');
-    var ejs = require('ejs');
-
-    var text = fs.readFileSync("./views/template.ejs", "utf-8");
-    var tttt = ejs.render(text, testJson);
-    res.send(tttt);
+    message.reply(testJson, req, res, next);
 }
 
 module.exports = router;

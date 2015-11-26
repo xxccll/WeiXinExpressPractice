@@ -63,7 +63,9 @@ router.post('/', function (req, res, next) {
         postData += chunk;
     });
     req.on('end', function () {
+        console.log(postData);
         xml2js.parseString(postData, {explicitArray : false, ignoreAttrs : true}, function (err, result) {
+            console.dir(result.xml);
             message.reply(result.xml, req, res, next);
         });
     });
