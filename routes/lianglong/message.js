@@ -17,14 +17,32 @@ function getTemplate() {
     return template;
 }
 
+/**
+ * 回复消息
+ * @param msg
+ * @param req
+ * @param res
+ * @param next
+ */
+function reply(msg, req, res, next) {
+    var content = getContent(msg);
+    var response = ejs.render(getTemplate(), content);
+    res.send(response);
+}
+
 
 /**
  *
  * @param msg   根据消息得到返回的内容
  */
 function getContent(msg) {
-    var obj = {};
-    obj.content = "hehe";
+    var obj = {
+        toUsername   : msg.FromUserName,
+        fromUsername : msg.ToUserName,
+        createTime   : new Date().getTime(),
+        msgType      : "text",
+        content      : "测试"
+    };
     switch (msg.MsgType) {
         case 'text':
             break;
@@ -46,29 +64,8 @@ function getContent(msg) {
     return obj;
 }
 
-/**
- * 回复消息
- * @param msg
- * @param req
- * @param res
- * @param next
- */
-function reply(msg, req, res, next) {
-    if (!msg){
-        console.log("msg == undefined !");
-        res.send("");
-        return;
-    }
-    var content = getContent(msg);
-    var testJson = {
-        toUsername   : msg.FromUserName,
-        fromUsername : msg.ToUserName,
-        createTime   : new Date().getTime(),
-        msgType      : 'text',
-        content      : "测试"
-    };
-    var response = ejs.render(getTemplate(), testJson);
-    res.send(response);
-}
+
+
+
 
 exports.reply = reply;
