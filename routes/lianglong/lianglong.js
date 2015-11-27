@@ -53,14 +53,12 @@ router.get('/', function (req, res, next) {
  * 处理post请求,用来处理用户发送的消息
  */
 router.post('/', function (req, res, next) {
-    var postData = "";
+    var body = "";
     req.on('data', function (chunk) {
-        postData += chunk;
+        body += chunk;
     });
     req.on('end', function () {
-        console.log(postData);
-        xml2js.parseString(postData, {explicitArray : false, ignoreAttrs : true}, function (err, result) {
-            console.dir(result.xml);
+        xml2js.parseString(body, {explicitArray : false, ignoreAttrs : true}, function (err, result) {
             message.reply(result.xml, req, res, next);
         });
     });
