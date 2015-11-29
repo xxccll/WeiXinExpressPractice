@@ -7,14 +7,14 @@
 
 
 ## 服务
-###LeanCloud
+### LeanCloud
 * 消息推送，聊天、短信、云存储服务：
 
 ### Fabric
 * Crash 监控、实时 log 收集、数据统计
 
 ### Fir.im
-* 测试分发：需要在工程里填写检查更新 URL 提交 App 后请设置访问密码 `DeepPass`
+* 测试分发：需要在工程里填写检查更新 URL 提交 App 后请设置访问密码 `xxxxxx`
 
 ### TBC
 
