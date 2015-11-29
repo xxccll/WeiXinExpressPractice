@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var lianglong = require('./routes/lianglong/lianglong');
+var docs = require('./routes/docs');
+var weixin = require('./routes/weixin');
 
 var app = express();
 
@@ -26,7 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/lianglong', lianglong);
+app.use('/docs', docs);
+app.use('/lianglong', weixin);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
